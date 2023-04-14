@@ -1,27 +1,273 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800;900&display=swap');
+
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(0, 0, 0, 1);
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+
+
+    /*font- varients*/
+    /* Large Devices */
+    --H1: 900 65px/90px 'Poppins', sans-serif;
+    --H2: 800 55px/76px 'Poppins', sans-serif;
+    --H3: 800 38px/52px 'Poppins', sans-serif;
+    --H4: 600 28px/38px 'Poppins', sans-serif;
+    --H5: 500 22px/30px 'Poppins', sans-serif;
+    --H6: 500 18px/29px 'Poppins', sans-serif;
+    --text-base: 400 16px/24px 'Poppins', sans-serif;
+
+    /* tablet device */
+    --H1-lg: 900 47px/68px 'Poppins', sans-serif;
+    --H2-lg: 800 42px/62px 'Poppins', sans-serif;
+    --H3-lg: 800 30px/47px 'Poppins', sans-serif;
+    --H4-lg: 600 28px/38px 'Poppins', sans-serif;
+    --H5-lg: 500 20px/27px 'Poppins', sans-serif;
+    --H6-lg: 500 18px/29px 'Poppins', sans-serif;
+    --text-base-lg: 400 16px/24px 'Poppins', sans-serif;
+
+    /* small device */
+    --H1-sm: 900 40px/56px 'Poppins', sans-serif;
+    --H2-sm: 800 38px/50px 'Poppins', sans-serif;
+    --H3-sm: 800 30px/38px 'Poppins', sans-serif;
+    --H4-sm: 600 28px/38px 'Poppins', sans-serif;
+    --H5-sm: 500 18px/24px 'Poppins', sans-serif;
+    --H6-sm: 500 18px/29px 'Poppins', sans-serif;
+    --text-base-sm: 400 14px/24px 'Poppins', sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+h1 {
+    font: var(--H1);
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+h2 {
+    font: var(--H2);
+}
+
+h3 {
+    font: var(--H3);
+}
+
+h4 {
+    font: var(--H4);
+}
+
+h5 {
+    font: var(--H5);
+}
+
+h6 {
+    font: var(--H6);
+}
+
+a,
+p li,
+span,
+input,
+button,
+textarea {
+    font: var(--text-base);
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+a.button,
+button {
+    padding: 0.8rem 2rem;
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 1080px) {
+    h1 {
+        font: var(--H1-lg);
+    }
+
+    h2 {
+        font: var(--H2-lg);
+    }
+
+    h3 {
+        font: var(--H3-lg);
+    }
+
+    h4 {
+        font: var(--H4-lg);
+    }
+
+    h5 {
+        font: var(--H5-lg);
+    }
+
+    h6 {
+        font: var(--H6-lg);
+    }
+
+    a,
+    p,
+    p li,
+    span,
+    input,
+    button,
+    textarea {
+        font: var(--text-base-lg);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    h1 {
+        font: var(--H1-sm);
+    }
+
+    h2 {
+        font: var(--H2-sm);
+    }
+
+    h3 {
+        font: var(--H3-sm);
+    }
+
+    h4 {
+        font: var(--H4-sm);
+    }
+
+    h5 {
+        font: var(--H5-sm);
+    }
+
+    h6 {
+        font: var(--H6-sm);
+    }
+
+    a,
+    p,
+    p li,
+    span,
+    input,
+    button,
+    textarea {
+        font: var(--text-base-sm);
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    letter-spacing: .5px;
+}
+
+/* PRODUCT DETAILS CAROUSEL STYLING CUSTOMIZATION START */
+.productCarousel.carousel-root {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 15px;
+}
+
+.productCarousel.carousel-root .carousel {
+    width: auto;
+}
+
+.productCarousel.carousel-root .carousel.carousel-slider {
+    width: 100%;
+}
+
+.productCarousel.carousel-root .carousel.carousel-slider .slider-wrapper {
+    border-radius: 10px;
+}
+
+.productCarousel.carousel-root .carousel .thumbs-wrapper {
+    margin: 0;
+}
+
+.productCarousel.carousel-root .carousel .thumb {
+    height: 60px;
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+}
+
+.productCarousel.carousel-root .carousel .thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.productCarousel.carousel-root .carousel .thumb:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: black;
+    opacity: 0;
+}
+
+.productCarousel.carousel-root .carousel .thumb.selected,
+.productCarousel.carousel-root .carousel .thumb:hover {
+    border: 0;
+}
+
+.productCarousel.carousel-root .carousel .thumb:hover:after,
+.productCarousel.carousel-root .carousel .thumb.selected:after {
+    opacity: 0.2;
+}
+
+.productCarousel .control-arrow {
+    display: none;
+}
+
+@media screen and (max-width: 767px) {
+    .productCarousel.carousel-root {
+        flex-direction: column;
+    }
+
+    .productCarousel.carousel-root .carousel .thumb {
+        border: 0;
+        padding: 0;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .productCarousel.carousel-root .carousel .thumbs {
+        transform: none !important;
+        flex-direction: column;
+        display: flex;
+        gap: 10px;
+    }
+
+    .productCarousel.carousel-root .carousel .thumb {
+        border: 0;
+        padding: 0;
+        margin: 0;
+    }
+}
+
+/* PRODUCT DETAILS CAROUSEL STYLING CUSTOMIZATION END */
+
+.markdown ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: disc;
+    margin: 20px 0;
+}
+
+.markdown ul li {
+    margin: 10px 0;
 }
