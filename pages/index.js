@@ -1,7 +1,11 @@
+import { HeroBanner, Product} from '@/components';
+
 export default function Home() {
 	return (
-  
-  <main>Homepage</main>
-  
-  )
+		<main className=''>
+			<HeroBanner />
+				<Product />
+		
+		</main>
+	);
 }

@@ -1,9 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800;900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800;900&display=swap');
 
+/* width */
+::-webkit-scrollbar {
+    width: .6rem;
+}
 
+/* Track */
+::-webkit-scrollbar-track {
+
+    background: #dddd;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #0284c7;
+    border-radius: 6px;
+}
+body{
+    scroll-behavior: smooth;
+}
 :root {
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
@@ -24,7 +42,7 @@
     --H4: 600 28px/38px 'Poppins', sans-serif;
     --H5: 500 22px/30px 'Poppins', sans-serif;
     --H6: 500 18px/29px 'Poppins', sans-serif;
-    --text-base: 400 16px/24px 'Poppins', sans-serif;
+    --text-base: 300 16px/24px 'Poppins', sans-serif;
 
     /* tablet device */
     --H1-lg: 900 47px/68px 'Poppins', sans-serif;
@@ -33,7 +51,7 @@
     --H4-lg: 600 28px/38px 'Poppins', sans-serif;
     --H5-lg: 500 20px/27px 'Poppins', sans-serif;
     --H6-lg: 500 18px/29px 'Poppins', sans-serif;
-    --text-base-lg: 400 16px/24px 'Poppins', sans-serif;
+    --text-base-lg: 300 16px/24px 'Poppins', sans-serif;
 
     /* small device */
     --H1-sm: 900 40px/56px 'Poppins', sans-serif;
@@ -42,7 +60,7 @@
     --H4-sm: 600 28px/38px 'Poppins', sans-serif;
     --H5-sm: 500 18px/24px 'Poppins', sans-serif;
     --H6-sm: 500 18px/29px 'Poppins', sans-serif;
-    --text-base-sm: 400 14px/24px 'Poppins', sans-serif;
+    --text-base-sm: 300 14px/24px 'Poppins', sans-serif;
 }
 
 h1 {
@@ -71,6 +89,7 @@ h6 {
 
 a,
 p li,
+p,
 span,
 input,
 button,
@@ -169,6 +188,7 @@ button {
     padding: 0;
     box-sizing: border-box;
     letter-spacing: .5px;
+   
 }
 
 /* PRODUCT DETAILS CAROUSEL STYLING CUSTOMIZATION START */
@@ -270,4 +290,11 @@ button {
 
 .markdown ul li {
     margin: 10px 0;
+}
+
+.Herobanner ul.thumbs.animated {
+    text-align: center;
+}
+.Herobanner ul.thumbs.animated li.thumb {
+    height: 45px;
 }
