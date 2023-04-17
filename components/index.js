@@ -6,3 +6,4 @@ export { default as MenuMobile } from '../components/MenuMobile';
 export { default as HeroBanner } from '../components/HeroBanner'; 
 export { default as Product } from '../components/Product';
 export { default as ProductCart } from '../components/ProductCart';
+export { default as ProductDetailsCarousel } from '../components/ProductDetailsCarousel';
