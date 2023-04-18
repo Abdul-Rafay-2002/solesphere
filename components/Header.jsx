@@ -33,7 +33,7 @@ const Header = () => {
  
 	return (
 		<header
-            className={`w-full h-auto sm:h-24 bg-sky-600 flex items-center shadow-xl justify-between z-20 sticky top-0 transition-transform duration-200 ${show}`}>
+			className={`w-full h-auto sm:h-24 bg-sky-600 flex items-center shadow-xl justify-between z-[1001] sticky top-0 transition-transform duration-200 ${show}`}>
 			<Wrapper className='flex justify-between items-center'>
 				<div className='w-24 md:w-20 grayscale invert'>
 					<Link href='/'>
@@ -61,6 +61,7 @@ const Header = () => {
 							5
 						</span>
 					</div>
+					<Link href={`/cart`}>
 					<div className='relative w-8 cursor-pointer'>
 						<FiShoppingBag
 							size={28}
@@ -70,6 +71,7 @@ const Header = () => {
 							5
 						</span>
 					</div>
+					</Link>
 					<div className='md:hidden relative w-8 cursor-pointer'>
 						{mobileMenu ? (
 							<AiOutlineClose

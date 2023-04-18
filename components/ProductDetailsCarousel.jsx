@@ -12,10 +12,14 @@ const ProductDetailsCarousel = () => {
 				infiniteLoop={true}
 				autoFocus={true}
 				showIndicators={false}
-                thumbWidth={65}
-                >
-                    {/* Paste Product Images... */}
-                </Carousel>
+				thumbWidth={65}
+			>
+				<img src='/nike-blue1.png' />
+				<img src='/nike-blue1.png' />
+				<img src='/nike-blue1.png' />
+				<img src='/nike-blue1.png' />
+				<img src='/nike-blue1.png' />
+			</Carousel>
 		</div>
 	);
 };

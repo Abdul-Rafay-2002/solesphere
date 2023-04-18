@@ -7,3 +7,5 @@ export { default as HeroBanner } from '../components/HeroBanner';
 export { default as Product } from '../components/Product';
 export { default as ProductCart } from '../components/ProductCart';
 export { default as ProductDetailsCarousel } from '../components/ProductDetailsCarousel';
+export { default as RealtedProduct } from '../components/RealtedProduct';
+export { default as CartItem } from '../components/CartItem';

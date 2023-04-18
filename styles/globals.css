@@ -19,9 +19,11 @@
     background: #0284c7;
     border-radius: 6px;
 }
-body{
+
+body {
     scroll-behavior: smooth;
 }
+
 :root {
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
@@ -188,14 +190,18 @@ button {
     padding: 0;
     box-sizing: border-box;
     letter-spacing: .5px;
-   
+
 }
 
 /* PRODUCT DETAILS CAROUSEL STYLING CUSTOMIZATION START */
 .productCarousel.carousel-root {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: column;
     gap: 15px;
+}
+
+.productCarousel.carousel-root .carousel .thumbs {
+    flex-direction: row;
 }
 
 .productCarousel.carousel-root .carousel {
@@ -224,7 +230,7 @@ button {
 .productCarousel.carousel-root .carousel .thumb img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
 }
 
@@ -235,7 +241,7 @@ button {
     position: absolute;
     top: 0;
     left: 0;
-    background-color: black;
+    background-color: #0284c7;
     opacity: 0;
 }
 
@@ -253,6 +259,12 @@ button {
     display: none;
 }
 
+.productCarousel li.slide.selected {
+    border: 1px solid #eee;
+    padding: 30px;
+    border-radius: 20px;
+}
+
 @media screen and (max-width: 767px) {
     .productCarousel.carousel-root {
         flex-direction: column;
@@ -262,19 +274,29 @@ button {
         border: 0;
         padding: 0;
     }
+
+    .productCarousel ul.thumbs.animated {
+        text-align: center;
+    }
+
+    .productCarousel li.slide.selected {
+        padding: 15px;
+
+    }
 }
 
 @media screen and (min-width: 768px) {
     .productCarousel.carousel-root .carousel .thumbs {
         transform: none !important;
-        flex-direction: column;
+        justify-content: center;
+        flex-direction: row;
         display: flex;
         gap: 10px;
     }
 
     .productCarousel.carousel-root .carousel .thumb {
-        border: 0;
-        padding: 0;
+        border: 1px solid #eee;
+        padding: .3rem;
         margin: 0;
     }
 }
@@ -295,6 +317,7 @@ button {
 .Herobanner ul.thumbs.animated {
     text-align: center;
 }
+
 .Herobanner ul.thumbs.animated li.thumb {
     height: 45px;
 }
