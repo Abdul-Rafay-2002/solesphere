@@ -11,7 +11,7 @@ const Cart = () => {
 
 				<div className='flex flex-col lg:flex-row gap-10 py-10'>
 					<div className='text-gray-50 bg-gray-800 flex-[2] rounded-xl'>
-                        <h5 className='bg-slate-900 px-3 py-3 font-semibold my-5  text-center md:text-left'>
+						<h5 className='bg-slate-900 px-3 py-3 font-semibold my-5  text-center md:text-left'>
 							Cart Items
 						</h5>
 						<div>
@@ -22,8 +22,10 @@ const Cart = () => {
 							<CartItem />
 						</div>
 					</div>
-                    <div className='flex-[1] text-gray-50 bg-gray-700 rounded-xl h-full pb-8'>
-						<h5 className='font-semibold my-5 mx-3 text-center md:text-left'>Summary</h5>
+					<div className='flex-[1] text-gray-50 bg-gray-700 rounded-xl h-full pb-8'>
+						<h5 className='font-semibold my-5 mx-3 text-center md:text-left'>
+							Summary
+						</h5>
 						<div className='flex items-center justify-between  bg-slate-900 px-3 py-3 '>
 							<h6>Subtotal</h6>
 							<p className='font-semibold'>$1200.00</p>
@@ -34,11 +36,26 @@ const Cart = () => {
 							duties and taxes, before any applicable discounts. It does not
 							include delivery costs and international transaction fees.
 						</p>
-                        <button className='bg-sky-600 m-auto text-center max-w-lg table hover:bg-sky-700 transition-all'>
-                            Checkout
-                        </button>
+						<button className='bg-sky-600 m-auto text-center max-w-lg table hover:bg-sky-700 transition-all'>
+							Checkout
+						</button>
 					</div>
 				</div>
+{/* EMPTY SCREEN */}
+				<div className='flex flex-col items-center gap-[40px] pb-24 '>
+					<Image src='/emptycart.svg' width={400} height={400} />
+					<span>
+						<h4 className=' text-gray-50 text-center'>Your cart is empty</h4>
+						<p className=' text-gray-50 text-center'>
+							Look like you have not added anything in your cart. <br /> Go
+							ahead and explore top categories
+						</p>
+					</span>
+					<Link href='/' className='text-gray-50 border px-4 py-3.5 rounded-md hover:bg-sky-800 hover:transition'>
+						Continue Shopping ?
+					</Link>
+				</div>
+{/* EMPTY SCREEN */}
 			</Wrapper>
 		</div>
 	);
