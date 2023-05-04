@@ -3,7 +3,7 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { ProductCart } from '.';
 
-const RealtedProduct = () => {
+const RealtedProduct = ({ products }) => {
 	const responsive = {
 		superLargeDesktop: {
 			// the naming can be any, depends on you.
@@ -40,14 +40,7 @@ const RealtedProduct = () => {
 				removeArrowOnDeviceType={['mobile']}
 				itemClass='px-[5px] py-[15px] relative inline-block'
 				responsive={responsive}>
-                    <ProductCart />
-                    <ProductCart />
-                    <ProductCart />
-                    <ProductCart />
-                    <ProductCart />
-                    <ProductCart />
-                    <ProductCart />
-                    <ProductCart />
+				{products?.map((product) => <ProductCart key={product._id} product={product} />)}
 			</Carousel>
 		</div>
 	);

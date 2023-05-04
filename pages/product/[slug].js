@@ -1,24 +1,35 @@
 import { Wrapper, ProductDetailsCarousel, RealtedProduct } from '@/components';
+import { client } from '@/lib/client';
 import React from 'react';
-import { BsFillBagCheckFill, BsFillHeartFill } from 'react-icons/bs'
+import { BsFillBagCheckFill, BsFillHeartFill } from 'react-icons/bs';
 
-const ProductDetail = () => {
+const ProductDetail = ({ product, products, categoryData }) => {
+	const {
+		images,
+		productTitle,
+		productNewPrice,
+		category,
+		slug,
+		tags,
+		productDescription,
+	} = product;
 	return (
 		<div className='w-full md:py-20'>
 			<Wrapper>
+				{/* {console.log(tags)} */}
 				{/* Product Slider */}
 				<div className='flex items-start flex-col lg:flex-row md:px-10 gap-[50px] lg:gap-[70px] md:gap-[30px]'>
 					<div className='w-full md:w-auto relative flex-[1.5] max-w-[550px] lg:max-full max-auto lg:mx-0'>
-						<ProductDetailsCarousel />
+						<ProductDetailsCarousel images={images} />
 					</div>
 					{/* Product Slider */}
 					{/* Product Description */}
 					<div className='flex-[1] md:pb-3 w-full mb-20'>
-						<h2 className='text-center md:text-left'>Nike Retro 6G</h2>
-						<h5 className='text-center md:text-left text-lg font-semibold m-0 '>
-							Men's Category
-						</h5>
-						<h6 className='text-center md:text-left pt-3'>$550.00</h6>
+						<h2 className='text-center md:text-left'>{productTitle}</h2>
+						<h5 className='text-center md:text-left text-lg font-semibold m-0 '></h5>
+						<h6 className='text-center md:text-left pt-3'>
+							${productNewPrice}.00
+						</h6>
 						<p className='text-center md:text-left capitalize'>
 							incl. of texas
 						</p>
@@ -26,8 +37,8 @@ const ProductDetail = () => {
 						{/* Product Details */}
 						<div className='my-7'>
 							<h5 className='font-bold my-2'>Product Details:</h5>
-							<p className='my-2'>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available</p>
-							<p className='my-2'>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available</p>
+							<p className='my-2'>{productDescription}</p>
+							{/* <p className='my-2'>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available</p> */}
 						</div>
 						{/* Product Details */}
 						{/* Product Range */}
@@ -39,33 +50,11 @@ const ProductDetail = () => {
 								</div>
 							</div>
 							<div className=' grid grid-cols-3 md:grid-cols-3 sm:grid-cols-3 lg:grid-cols-4 gap-4'>
-								<button className='border px-1 py-2 font-semibold rounded-md hover:text-gray-50 hover:border-sky-600 hover:transition-all hover:bg-sky-500/60'>
-									Uk6
-								</button>
-								<button className='border px-1 py-2 font-semibold rounded-md hover:text-gray-50 hover:border-sky-600 hover:transition-all hover:bg-sky-500/60'>
-									Uk6
-								</button>
-								<button className='border px-1 py-2 font-semibold rounded-md hover:text-gray-50 hover:border-sky-600 hover:transition-all hover:bg-sky-500/60'>
-									Uk6
-								</button>
-								<button className='border px-1 py-2 font-semibold rounded-md hover:text-gray-50 hover:border-sky-600 hover:transition-all hover:bg-sky-500/60'>
-									Uk6
-								</button>
-								<button className='border px-1 py-2 font-semibold rounded-md hover:text-gray-50 hover:border-sky-600 hover:transition-all hover:bg-sky-500/60'>
-									Uk6
-								</button>
-								<button className='border px-1 py-2 font-semibold rounded-md hover:text-gray-50 hover:border-sky-600 hover:transition-all hover:bg-sky-500/60'>
-									Uk6
-								</button>
-								<button className='border px-1 py-2 font-semibold rounded-md text-gray-300 border-gray-200 hover:transition-all bg-black/5 cursor-not-allowed'>
-									Uk6 Disable
-								</button>
-								<button className='border px-1 py-2 font-semibold rounded-md text-gray-300 border-gray-200 hover:transition-all bg-black/5 cursor-not-allowed'>
-									Uk6 Disable
-								</button>
-								<button className='border px-1 py-2 font-semibold rounded-md text-gray-300 border-gray-200 hover:transition-all bg-black/5 cursor-not-allowed'>
-									Uk6 Disable
-								</button>
+								{tags.map((tag, i) => (
+									<button className='border px-1 py-2 font-semibold rounded-md hover:text-gray-50 hover:border-sky-600 hover:transition-all hover:bg-sky-500/60'>
+										{tag}
+									</button>
+								))}
 								<button className='border px-1 py-2 font-semibold rounded-md text-gray-300 border-gray-200 hover:transition-all bg-black/5 cursor-not-allowed'>
 									Uk6 Disable
 								</button>
@@ -91,11 +80,56 @@ const ProductDetail = () => {
 				</div>
 				{/* Product Description */}
 				{/* Related product carousle*/}
-					<RealtedProduct/>
+				<RealtedProduct products={products} />
 				{/* Related product carousle */}
 			</Wrapper>
 		</div>
 	);
 };
 
+export const getStaticPaths = async () => {
+	const query = `*[_type == "product"] {
+    slug {
+      current
+    }
+  }
+  `;
+
+	const products = await client.fetch(query);
+
+	const paths = products.map((product) => ({
+		params: {
+			slug: product.slug.current,
+		},
+	}));
+
+	return {
+		paths,
+		fallback: 'blocking',
+	};
+};
+
+export const getStaticProps = async ({ params: { slug } }) => {
+	const query = `*[_type == "product" && slug.current == '${slug}'][0]`;
+	const productsQuery = '*[_type == "product"]';
+	const categoryQuery = '*[_type == "category"]';
+
+	try {
+		const product = await client.fetch(query);
+		const products = await client.fetch(productsQuery);
+		const categoryData = await client.fetch(categoryQuery);
+		return {
+			props: { products, product, categoryData },
+		};
+	} catch (error) {
+		console.error(error);
+		return {
+			props: {
+				error: {
+					message: 'Unable to fetch product data',
+				},
+			},
+		};
+	}
+};
 export default ProductDetail;

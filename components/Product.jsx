@@ -1,7 +1,7 @@
 import React from 'react';
-import { ProductCart, Wrapper } from '.';
+import { ProductCart, Wrapper } from './index';
 
-const Product = () => {
+const Product = ({ productData}) => {
 	return (
 		<div id='Product' className='py-20 bg-gray-950'>
 			<Wrapper>
@@ -14,18 +14,7 @@ const Product = () => {
 					</p>
 				</div>
 				<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 my-[25px] md:px-0 '>
-					<ProductCart />
-					<ProductCart />
-					<ProductCart />
-					<ProductCart />
-					<ProductCart />
-					<ProductCart />
-					<ProductCart />
-					<ProductCart />
-					<ProductCart />
-					<ProductCart />
-					<ProductCart />
-					<ProductCart />
+					{productData.map((product) => <ProductCart key={product._id} product={product} />)}
 				</div>
 			</Wrapper>
 		</div>

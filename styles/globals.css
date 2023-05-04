@@ -194,6 +194,14 @@ button {
 }
 
 /* PRODUCT DETAILS CAROUSEL STYLING CUSTOMIZATION START */
+.productCarousel ul.slider li.slide.selected img{
+    width: 80%;
+    vertical-align: top;
+    border: 0;
+    max-height: min-content;
+    height: auto;
+    object-fit: cover;
+}
 .productCarousel.carousel-root {
     display: flex;
     flex-direction: column;
@@ -284,6 +292,12 @@ button {
 
     }
 }
+.productCarousel.carousel-root .carousel .thumb .thumb {
+    border: 1px solid #eee;
+    padding: .2rem;
+    margin: 0;
+}
+
 
 @media screen and (min-width: 768px) {
     .productCarousel.carousel-root .carousel .thumbs {
@@ -292,12 +306,6 @@ button {
         flex-direction: row;
         display: flex;
         gap: 10px;
-    }
-
-    .productCarousel.carousel-root .carousel .thumb {
-        border: 1px solid #eee;
-        padding: .3rem;
-        margin: 0;
     }
 }
 

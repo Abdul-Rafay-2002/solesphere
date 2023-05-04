@@ -2,7 +2,8 @@ import { Wrapper, ProductCart } from '@/components';
 import React from 'react';
 import { useRouter } from 'next/router';
 
-const Products = () => {
+const Products = ({ productData }) => {
+	
 	const router = useRouter();
 	const { slug } = router.query;
 
@@ -13,22 +14,22 @@ const Products = () => {
 					<h1>Running Shoes</h1>
 				</div>
 				<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 my-[25px] md:px-0 '>
-					<ProductCart />
-					<ProductCart />
-					<ProductCart />
-					<ProductCart />
-					<ProductCart />
-					<ProductCart />
-					<ProductCart />
-					<ProductCart />
-					<ProductCart />
-					<ProductCart />
-					<ProductCart />
-					<ProductCart />
+					{productData?.map((product) => <ProductCart key={product._id} product={product} />)}
 				</div>
 			</Wrapper>
 		</div>
 	);
+};
+
+export const getServerSideProps = async () => {
+
+	const productQuery = '*[_type == "product"]';
+	const productData = await client.fetch(productQuery);
+	return {
+		props: {
+			productData,
+		},
+	};
 };
 
 export default Products;
