@@ -32,7 +32,9 @@ export const StateContext = ({ children }) => {
 			products.quantity = quantity;
 			setcartItems([...cartItems, { ...products }]);
 		}
-        toast.success(`${prdctQunatity} piece of ${products.productTitle} added to the cart`);
+		toast.success(
+			`${prdctQunatity} piece of ${products.productTitle} added to the cart`
+		);
 	};
 	//----------------- Increase and Deacrease product Quantity functions -------------/
 	const increaseQty = () => {
