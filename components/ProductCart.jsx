@@ -6,7 +6,7 @@ import React from 'react';
 
 const ProductCart = ({ product: { images, productTitle, productNewPrice, productOldPrice, productDiscount, slug }}) => {
     return (
-        <Link href={`/product/${slug.current}`} className='border p-3 block rounded-lg relative text-center bg-gray-900'>
+        <Link href={`/product/${slug.current}`} className='border p-3 h-full block rounded-lg relative text-center bg-gray-900'>
             <img className='hover:scale-105 hover:transition-all h-60 w-full object-cover p-2' src={urlFor(images && images[0])}/>
             <h6 className='capitalize text-gray-50 font-semibold my-2'>{productTitle}</h6>
             <div className='flex items-center justify-center pb-3 mb-3'>

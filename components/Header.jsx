@@ -4,12 +4,15 @@ import Link from 'next/link';
 import { FiShoppingBag, FiHeart } from 'react-icons/fi';
 import { FaAlignRight } from 'react-icons/fa';
 import { AiOutlineClose } from 'react-icons/ai';
+import { useStateContext } from '@/context/StateContext';
 
 const Header = () => {
 	const [mobileMenu, setMobileMenu] = useState(false);
 	const [showCategoryMenu, setShowCategoryMenu] = useState(false);
 	const [show, setShow] = useState('translate-y-0');
 	const [lastScrollY, setLastScrollY] = useState(0);
+
+	const {totalQuantity} = useStateContext();
 
 	const controlNavigationBar = () => {
 		if (window.scrollY > 200) {
@@ -68,7 +71,7 @@ const Header = () => {
 							className='text-gray-50  hover:scale-90 transition-all'
 						/>
                         <span className='text-[10px] leading-3 font-medium px-1.5 right-[-9px] absolute top-[-13px] text-gray-50 bg-red-600 p-1 rounded-full'>
-							5
+							{totalQuantity}
 						</span>
 					</div>
 					</Link>

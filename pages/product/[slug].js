@@ -1,4 +1,5 @@
 import { Wrapper, ProductDetailsCarousel, RealtedProduct } from '@/components';
+import { useStateContext } from '@/context/StateContext';
 import { client } from '@/lib/client';
 import React from 'react';
 import { BsFillBagCheckFill, BsFillHeartFill } from 'react-icons/bs';
@@ -13,9 +14,11 @@ const ProductDetail = ({ product, products, categoryData }) => {
 		tags,
 		productDescription,
 	} = product;
+	const { onAddtoCart, prdctQunatity} = useStateContext();
 	return (
 		<div className='w-full md:py-20'>
 			<Wrapper>
+				{console.log(products)}
 				{/* {console.log(tags)} */}
 				{/* Product Slider */}
 				<div className='flex items-start flex-col lg:flex-row md:px-10 gap-[50px] lg:gap-[70px] md:gap-[30px]'>
@@ -51,7 +54,7 @@ const ProductDetail = ({ product, products, categoryData }) => {
 							</div>
 							<div className=' grid grid-cols-3 md:grid-cols-3 sm:grid-cols-3 lg:grid-cols-4 gap-4'>
 								{tags.map((tag, i) => (
-									<button className='border px-1 py-2 font-semibold rounded-md hover:text-gray-50 hover:border-sky-600 hover:transition-all hover:bg-sky-500/60'>
+									<button key={i} className='border px-1 py-2 font-semibold rounded-md hover:text-gray-50 hover:border-sky-600 hover:transition-all hover:bg-sky-500/60'>
 										{tag}
 									</button>
 								))}
@@ -67,7 +70,7 @@ const ProductDetail = ({ product, products, categoryData }) => {
 						</div>
 						{/* Product Range */}
 						{/* Add to Cart button */}
-						<button className=' flex mb-3 rounded-3xl justify-center w-full border bg-sky-900 text-sky-50 active:text-gray-50 hover:text-gray-50 hover:bg-sky-600 transition-all hover:opacity-70'>
+						<button className=' flex mb-3 rounded-3xl justify-center w-full border bg-sky-900 text-sky-50 active:text-gray-50 hover:text-gray-50 hover:bg-sky-600 transition-all hover:opacity-70' onClick={() => onAddtoCart(product, prdctQunatity)}>
 							Add to Cart <BsFillBagCheckFill size={18} className='mx-4' />
 						</button>
 						{/* Add to Cart button */}
