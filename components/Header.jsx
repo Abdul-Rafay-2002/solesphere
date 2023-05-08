@@ -55,15 +55,17 @@ const Header = () => {
 					/>
 				)}
 				<div className='flex items-center gap-5'>
+					<Link href={'/wishlist'}>
 					<div className='relative w-8 cursor-pointer'>
 						<FiHeart
 							size={28}
 							className='text-gray-50  hover:scale-90 transition-all'
-						/>
+							/>
                         <span className='text-[10px] leading-3 font-medium px-1.5 right-[-9px] absolute top-[-13px] text-gray-50 bg-red-600 p-1 rounded-full'>
 							5
 						</span>
 					</div>
+					</Link>
 					<Link href={`/cart`}>
 					<div className='relative w-8 cursor-pointer'>
 						<FiShoppingBag

@@ -1,13 +1,16 @@
+import { BiCategory, BiArchiveIn } from 'react-icons/bi';
+
 export default {
     name: 'product',
     title: 'Product',
     type: 'document',
+    icon: BiArchiveIn,
     fields: [
         {
             name: 'images',
             title: 'Images',
             type: 'array',
-            of: [{ type: 'image' }],
+            of: [{ type: 'image', options: {hotspot: true} }],
         },
         {
             name: 'productTitle',
@@ -51,6 +54,7 @@ export default {
             name: 'category',
             title: 'Category',
             type: 'reference',
+            icon: BiCategory,
             to: [{ type: 'category' }],
         },
         {
@@ -66,4 +70,18 @@ export default {
             ]
         },
     ],
+    preview: {
+        select: {
+            title: 'productTitle',
+            subtitle: 'productDescription',
+            media: 'images.0.assets'
+        },
+        prepare({ title, subtitle, media }) {
+            return {
+                title: `${title}`,
+                subtitle: `${subtitle}`,
+                media: media,   
+            };
+        },
+    },
 }

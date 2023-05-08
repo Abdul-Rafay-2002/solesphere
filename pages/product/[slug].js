@@ -14,11 +14,13 @@ const ProductDetail = ({ product, products, categoryData }) => {
 		tags,
 		productDescription,
 	} = product;
+
 	const { onAddtoCart, prdctQunatity} = useStateContext();
+
 	return (
 		<div className='w-full md:py-20'>
 			<Wrapper>
-				{console.log(products)}
+				{console.log(categoryData)}
 				{/* {console.log(tags)} */}
 				{/* Product Slider */}
 				<div className='flex items-start flex-col lg:flex-row md:px-10 gap-[50px] lg:gap-[70px] md:gap-[30px]'>
@@ -29,7 +31,7 @@ const ProductDetail = ({ product, products, categoryData }) => {
 					{/* Product Description */}
 					<div className='flex-[1] md:pb-3 w-full mb-20'>
 						<h2 className='text-center md:text-left'>{productTitle}</h2>
-						<h5 className='text-center md:text-left text-lg font-semibold m-0 '></h5>
+						<h5 className='text-center md:text-left text-lg font-semibold m-0 '>{category._ref}</h5>
 						<h6 className='text-center md:text-left pt-3'>
 							${productNewPrice}.00
 						</h6>

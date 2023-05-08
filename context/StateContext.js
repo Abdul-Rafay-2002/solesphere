@@ -8,6 +8,7 @@ export const StateContext = ({ children }) => {
 	const [totalPrice, settotalPrice] = useState(0);
 	const [totalQuantity, settotalQuantity] = useState(0);
 	const [prdctQunatity, setprdctQunatity] = useState(1);
+	let foundProduct;
 
 	const onAddtoCart = (products, quantity) => {
 		const checkProductInCart = cartItems.find(
@@ -36,6 +37,18 @@ export const StateContext = ({ children }) => {
 			`${prdctQunatity} piece of ${products.productTitle} added to the cart`
 		);
 	};
+	
+	//Remove Item from the cart functionality
+	const onRemoveCartItem = (products) => {
+		foundProduct = cartItems.find((item) => item._id === products._id);
+		const newCartItems = cartItems.filter((item) => item._id !== products._id);
+
+		settotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price * foundProduct.quantity);
+		settotalQuantity(prevTotalQuantites => prevTotalQuantites - foundProduct.quantity);
+		setcartItems(newCartItems);
+	}
+
+
 	//----------------- Increase and Deacrease product Quantity functions -------------/
 	const increaseQty = () => {
 		setprdctQunatity((prevQty) => prevQty + 1);
@@ -57,6 +70,7 @@ export const StateContext = ({ children }) => {
 				prdctQunatity,
 				increaseQty,
 				descreaseQty,
+				onRemoveCartItem
 			}}>
 			{children}
 		</Context.Provider>

@@ -14,11 +14,13 @@ const subMenuData = [
 	{ id: 2, name: 'Sneakers', doc_count: 8 },
 	{ id: 3, name: 'Running shoes', doc_count: 64 },
 	{ id: 4, name: 'Football shoes', doc_count: 84 },
+
 ];
 
 const Menu = ({ showCategoryMenu, setShowCategoryMenu }) => {
 	return (
 		<ul className='hidden md:flex items-center gap-10'>
+			
 			{data.map((item) => {
 				return (
 					<React.Fragment key={item.id}>

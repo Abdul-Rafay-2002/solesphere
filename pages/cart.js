@@ -8,7 +8,8 @@ const Cart = () => {
 	const cartRef = useRef();
 	const {
 		 totalPrice,
-		 cartItems
+		 cartItems,
+		 
 	} = useStateContext();
 	return (
 		<div className='w-full py-20 bg-gray-950' ref={cartRef}>
@@ -38,11 +39,11 @@ const Cart = () => {
 							Cart Items
 						</h5>
 						<div>
-							<CartItem cartItems={cartItems} />
+							<CartItem cartItems={cartItems} key={cartItems._id}  />
 						</div>
 {/* EMPTY SCREEN */}
 				{cartItems.length < 1 && (
-				<div className='flex flex-col items-center gap-[40px] pb-12 '>
+				<div key={cartItems.productTitle} className='flex flex-col items-center gap-[40px] pb-12 '>
 								<Image src='/emptycart.svg' width={350} height={350} alt='empty-cart' priority={true} style={{ width: '350px', height: '350px' }} />
 					<span>
 						<h4 className=' text-gray-50 text-center'>Your cart is empty</h4>
@@ -51,7 +52,7 @@ const Cart = () => {
 							ahead and explore top categories
 						</p>
 					</span>
-					<Link href='/' className='text-gray-50 border px-4 py-3.5 rounded-md hover:bg-sky-800 hover:transition'>
+					<Link href='/products' className='text-gray-50 border px-4 py-3.5 rounded-md hover:bg-sky-800 hover:transition'>
 						Continue Shopping ?
 					</Link>
 				</div>
